@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>_05</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="solution\**" />
+    <Compile Remove="src\bin\**" />
+    <Compile Remove="src\obj\**" />
+    <Compile Remove="tests\**" />
+    <EmbeddedResource Remove="solution\**" />
+    <EmbeddedResource Remove="src\bin\**" />
+    <EmbeddedResource Remove="src\obj\**" />
+    <EmbeddedResource Remove="tests\**" />
+    <None Remove="solution\**" />
+    <None Remove="src\bin\**" />
+    <None Remove="src\obj\**" />
+    <None Remove="tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="test.py" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,49 @@
+﻿<Properties StartupConfiguration="{EBB8A70D-9C5B-4746-BFE8-FE4A734F5B44}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.01 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.06 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.05 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Teema_6" expanded="True">
+            <Node name="01" expanded="True">
+              <Node name="src" expanded="True" />
+              <Node name="tests" expanded="True" />
+            </Node>
+            <Node name="02" expanded="True">
+              <Node name="src" expanded="True" />
+              <Node name="tests" expanded="True" />
+            </Node>
+            <Node name="03" expanded="True">
+              <Node name="src" expanded="True" />
+            </Node>
+            <Node name="04" expanded="True">
+              <Node name="src" expanded="True" />
+              <Node name="tests" expanded="True" />
+            </Node>
+            <Node name="05" expanded="True">
+              <Node name="src" expanded="True" />
+              <Node name="tests" expanded="True" />
+            </Node>
+            <Node name="06" expanded="True">
+              <Node name="src" expanded="True">
+                <Node name="my_code.cs" selected="True" />
+              </Node>
+              <Node name="tests" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.02 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.03 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.04 PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

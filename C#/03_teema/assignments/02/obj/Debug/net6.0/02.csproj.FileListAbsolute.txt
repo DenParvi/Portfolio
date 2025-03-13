@@ -1,0 +1,15 @@
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\bin\Debug\net6.0\02.exe
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\bin\Debug\net6.0\02.deps.json
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\bin\Debug\net6.0\02.runtimeconfig.json
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\bin\Debug\net6.0\02.dll
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\bin\Debug\net6.0\02.pdb
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\obj\Debug\net6.0\02.csproj.AssemblyReference.cache
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\obj\Debug\net6.0\02.GeneratedMSBuildEditorConfig.editorconfig
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\obj\Debug\net6.0\02.AssemblyInfoInputs.cache
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\obj\Debug\net6.0\02.AssemblyInfo.cs
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\obj\Debug\net6.0\02.csproj.CoreCompileInputs.cache
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\obj\Debug\net6.0\02.dll
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\obj\Debug\net6.0\refint\02.dll
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\obj\Debug\net6.0\02.pdb
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\obj\Debug\net6.0\02.genruntimeconfig.cache
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\03_teema\assignments\02\obj\Debug\net6.0\ref\02.dll

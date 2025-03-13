@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Projekti
+{
+    class TestMain
+    {
+        static void Main(string[] args)
+        {
+            int koko;
+            int[] taulu;
+            MyProgram.KysyKoko(out koko);
+            MyProgram.LuoTaulukko(koko, out taulu);
+            Console.WriteLine(taulu.Length);
+            MyProgram.ArvoArvosanat(taulu);
+            foreach (int n in taulu)
+                Console.Write("{0} ",n);
+            Console.WriteLine();
+            int c = MyProgram.TutkiHylatyt(taulu);
+            MyProgram.Tulosta(c);
+        }
+    }
+}

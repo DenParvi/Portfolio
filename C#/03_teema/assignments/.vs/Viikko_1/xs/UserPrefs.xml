@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{171A254F-C447-43C7-AB45-38E2E4EB4A28}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.01 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Teht 1/src/my_code.cs">
+    <Files>
+      <File FileName="Teht 1/src/my_code.cs" Line="11" Column="3" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Viikko_1" expanded="True">
+            <Node name="01" expanded="True">
+              <Node name="ConnectedServicesFolder" selected="True" />
+              <Node name="src" expanded="True" />
+            </Node>
+            <Node name="02" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>

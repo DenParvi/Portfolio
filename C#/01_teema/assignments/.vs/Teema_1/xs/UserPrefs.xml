@@ -1,0 +1,37 @@
+﻿<Properties StartupConfiguration="{88A8EC0F-6DB7-4635-8FE0-5366B70BA38F}|Default">
+  <MonoDevelop.Ide.ItemProperties.01 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Teema_1" expanded="True">
+            <Node name="01" expanded="True">
+              <Node name="src" expanded="True" />
+            </Node>
+            <Node name="02" expanded="True">
+              <Node name="src" expanded="True">
+                <Node name="my_code.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="03" expanded="True">
+              <Node name="src" expanded="True" />
+            </Node>
+            <Node name="04" expanded="True">
+              <Node name="src" expanded="True" />
+            </Node>
+            <Node name="05" expanded="True">
+              <Node name="src" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.03 PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

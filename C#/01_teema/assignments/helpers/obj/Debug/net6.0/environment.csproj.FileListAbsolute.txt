@@ -1,0 +1,15 @@
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\bin\Debug\net6.0\environment.exe
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\bin\Debug\net6.0\environment.deps.json
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\bin\Debug\net6.0\environment.runtimeconfig.json
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\bin\Debug\net6.0\environment.dll
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\bin\Debug\net6.0\environment.pdb
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\obj\Debug\net6.0\environment.csproj.AssemblyReference.cache
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\obj\Debug\net6.0\environment.GeneratedMSBuildEditorConfig.editorconfig
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\obj\Debug\net6.0\environment.AssemblyInfoInputs.cache
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\obj\Debug\net6.0\environment.AssemblyInfo.cs
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\obj\Debug\net6.0\environment.csproj.CoreCompileInputs.cache
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\obj\Debug\net6.0\environment.dll
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\obj\Debug\net6.0\refint\environment.dll
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\obj\Debug\net6.0\environment.pdb
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\obj\Debug\net6.0\environment.genruntimeconfig.cache
+C:\D\Suomi\01_Tradenomi\08_C#\Tehtävät\01_teema\assignments\helpers\obj\Debug\net6.0\ref\environment.dll

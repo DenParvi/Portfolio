@@ -1,0 +1,10 @@
+Ohjelma ei saanut parametreja
+1
+kaksi
+parametreja
+tulee
+Ohjelma ei saanut parametreja
+1
+kaksi
+parametreja
+tulee
