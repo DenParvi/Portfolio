@@ -1,8 +1,0 @@
-json-server --watch db.json --port 3004
-http://localhost:3004/asiakas
-
-http://localhost:3000
-
-npm start
-
-npm run test -s ./teht17.test.js > test-output8.log 2>&1
