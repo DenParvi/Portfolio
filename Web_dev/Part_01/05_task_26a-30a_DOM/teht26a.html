@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekisteröityminen</title>
+    <style>
+        #error, #error_ammatti {
+            color: red;
+        }
+        #results {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tapahtuman rekisteröityminen</h1>
+    <form id="registrationForm">
+        <label for="nimi">Nimi:</label>
+        <input type="text" id="nimi" name="nimi"><br><br>
+        
+        <label for="osoite">Osoite:</label>
+        <input type="text" id="osoite" name="osoite"><br><br>
+        
+        <label for="ammatti">Ammatti:</label>
+        <select id="ammatti">
+            <option value="tyhja">-- Valitse ammatti --</option>
+            <option value="opettaja">Opettaja</option>
+            <option value="ohjelmoija">Ohjelmoija</option>
+            <option value="laakari">Lääkäri</option>
+            <option value="poliisi">Poliisi</option>
+        </select><br><br>
+        
+        <label><input type="checkbox" id="erityisruokavalio" value="Erityisruokavalio"> Erityisruokavalio</label><br>
+        <label><input type="checkbox" id="tarvitsee_majoituksen" value="Tarvitsee majoituksen"> Tarvitsee majoituksen</label><br>
+        <label><input type="checkbox" id="opiskelija" value="Opiskelija"> Opiskelija</label><br><br>
+    </form>
+    <button id="reg">Rekisteröidy 26</button>
+    <button id="reg_27">Rekisteröidy 27</button>
+    
+    <h4 id="error"></h4>
+    <h4 id="error_ammatti"></h4>
+    
+    <div id="results">
+        <p id="data"></p>
+        <p id="tyo"></p>
+        <p id="optiot"></p>
+        <p id="o_nro"></p>
+    </div>
+
+    <form id="registrationForm">
+        <!-- Ваш существующий код -->
+        <label><input type="checkbox" id="opiskelija" value="Opiskelija"> Opiskelija</label><br>
+        <div id="opiskelija_div" style="display: none; margin-top: 10px;">
+            <label for="opiskelijanro">Opiskelijanro:</label>
+            <input type="text" id="opiskelijanro"><br><br>
+        </div>
+    </form>
+    
+
+    <script>
+        // Существующая логика для кнопки "Rekisteröidy 26"
+        document.getElementById('reg').addEventListener('click', function() {
+            const nimiInput = document.getElementById('nimi');
+            const osoiteInput = document.getElementById('osoite');
+            const errorElement = document.getElementById('error');
+            const dataElement = document.getElementById('data');
+            
+            const nimi = nimiInput.value.trim();
+            const osoite = osoiteInput.value.trim();
+            
+            errorElement.textContent = '';
+            dataElement.textContent = '';
+
+            let errors = [];
+            if (nimi.length < 5 && osoite.length < 5) {
+                errors.push('Nimi ja osoite väärin');
+            }
+            if (nimi.length < 5) {
+                errors.push('Nimi väärin');
+            }
+            if (osoite.length < 5) {
+                errors.push('Osoite väärin');
+            }
+
+            if (errors.length > 0) {
+                errorElement.textContent = errors.join(' ja ');
+            } else {
+                dataElement.textContent = `${nimi},${osoite}`;
+            }
+        });
+
+        // Tehtävä 27"
+        document.getElementById('reg_27').addEventListener('click', function() {
+            // Получение элементов
+            const ammattiSelect = document.getElementById('ammatti');
+            const erityisruokavalioCheckbox = document.getElementById('erityisruokavalio');
+            const tarvitseeMajoituksenCheckbox = document.getElementById('tarvitsee_majoituksen');
+            const opiskelijaCheckbox = document.getElementById('opiskelija');
+
+            const errorAmmattiElement = document.getElementById('error_ammatti');
+            const tyoElement = document.getElementById('tyo');
+            const optiotElement = document.getElementById('optiot');
+
+            // Очистка результатов и ошибок
+            errorAmmattiElement.textContent = '';
+            tyoElement.textContent = '';
+            optiotElement.textContent = '';
+
+            // Проверка выбора профессии
+            let ammatti = ammattiSelect.value;
+            if (ammatti === 'tyhja') {
+                ammatti = ''; // Преобразование 'tyhja' в пустое значение
+            }
+
+            if (!ammatti) {
+                errorAmmattiElement.textContent = 'Valitse ammatti';
+                return; // Остановка, если профессия не выбрана
+            } else {
+                // Отображение выбранной профессии
+                tyoElement.textContent = `Ammatti: ${ammattiSelect.options[ammattiSelect.selectedIndex].text}`;
+            }
+
+            // Сбор данных из чекбоксов
+            const selectedOptions = [];
+            if (erityisruokavalioCheckbox.checked) {
+                selectedOptions.push(erityisruokavalioCheckbox.value);
+            }
+            if (tarvitseeMajoituksenCheckbox.checked) {
+                selectedOptions.push(tarvitseeMajoituksenCheckbox.value);
+            }
+            if (opiskelijaCheckbox.checked) {
+                selectedOptions.push(opiskelijaCheckbox.value);
+            }
+
+            // Отображение выбранных опций
+            if (selectedOptions.length > 0) {
+                optiotElement.textContent = `Valitsit seuraavat optiot:${selectedOptions.join(',')}`;
+            } else {
+                optiotElement.textContent = ''; // Очистка, если ничего не выбрано
+            }
+        });
+
+//Tehtävä 28 
+// Показ/скрытие поля "Opiskelijanro"
+document.getElementById('opiskelija').addEventListener('change', function () {
+    const opiskelijaDiv = document.getElementById('opiskelija_div');
+    if (this.checked) {
+        opiskelijaDiv.style.display = 'block'; // Показать поле
+    } else {
+        opiskelijaDiv.style.display = 'none'; // Скрыть поле
+        document.getElementById('opiskelijanro').value = ''; // Очистить поле
+    }
+});
+
+// Обработка нажатия кнопки "Rekisteröidy 27"
+document.getElementById('reg_27').addEventListener('click', function () {
+    const opiskelijaCheckbox = document.getElementById('opiskelija');
+    const opiskelijanroInput = document.getElementById('opiskelijanro');
+    const opiskelijanroValue = opiskelijanroInput.value.trim();
+    const oNroElement = document.getElementById('o_nro');
+
+    // Очистка результатов
+    oNroElement.textContent = '';
+
+    // Если выбран "Opiskelija", проверить поле "Opiskelijanro"
+    if (opiskelijaCheckbox.checked) {
+        if (!opiskelijanroValue) {
+            alert('Opiskelijanumero on pakollinen');
+            return; // Остановить обработку
+        } else {
+            // Отобразить введенный студентский номер
+            oNroElement.textContent = `Opiskelijanro: ${opiskelijanroValue}`;
+        }
+    }
+
+    // Остальная существующая логика...
+    const ammattiSelect = document.getElementById('ammatti');
+    const erityisruokavalioCheckbox = document.getElementById('erityisruokavalio');
+    const tarvitseeMajoituksenCheckbox = document.getElementById('tarvitsee_majoituksen');
+    const errorAmmattiElement = document.getElementById('error_ammatti');
+    const tyoElement = document.getElementById('tyo');
+    const optiotElement = document.getElementById('optiot');
+
+    // Проверка профессии
+    let ammatti = ammattiSelect.value;
+    if (ammatti === 'tyhja') {
+        ammatti = '';
+    }
+
+    errorAmmattiElement.textContent = '';
+    tyoElement.textContent = '';
+    optiotElement.textContent = '';
+
+    if (!ammatti) {
+        errorAmmattiElement.textContent = 'Valitse ammatti';
+        return;
+    } else {
+        tyoElement.textContent = `Ammatti: ${ammattiSelect.options[ammattiSelect.selectedIndex].text}`;
+    }
+
+    // Сбор данных из чекбоксов
+    const selectedOptions = [];
+    if (erityisruokavalioCheckbox.checked) {
+        selectedOptions.push(erityisruokavalioCheckbox.value);
+    }
+    if (tarvitseeMajoituksenCheckbox.checked) {
+        selectedOptions.push(tarvitseeMajoituksenCheckbox.value);
+    }
+    if (opiskelijaCheckbox.checked) {
+        selectedOptions.push(opiskelijaCheckbox.value);
+    }
+
+    // Отображение выбранных опций
+    if (selectedOptions.length > 0) {
+        optiotElement.textContent = `Valitsit seuraavat optiot:${selectedOptions.join(',')}`;
+    } else {
+        optiotElement.textContent = '';
+    }
+});
+
+
+    </script>
+</body>
+</html>

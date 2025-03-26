@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    max-width: 600px;
+    width: 100%;
+}
+
+.form-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.form-table td {
+    padding: 10px;
+    vertical-align: top;
+}
+
+.form-table label {
+    display: block;
+}
+
+.buttons {
+    text-align: center;
+}
+
+.reset-button, .submit-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.kuva {
+    max-width: 50px;
+    height: 50px;
+    display: inline-block;
+    
+}

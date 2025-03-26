@@ -1,0 +1,21 @@
+/* Стили для первого абзаца */
+#esipuhe {
+    text-decoration: underline; /* Подчёркивание */
+    text-align: right; /* Выравнивание по правому краю */
+    letter-spacing: 10px; /* Расстояние между буквами */
+    text-indent: 100px; /* Отступ для первой строки */
+    line-height: 2; /* Межстрочный интервал в 2 раза больше стандартного */
+}
+
+/* Стили для второго абзаца */
+.uppercase {
+    text-transform: uppercase; /* Преобразование текста в верхний регистр */
+    font-family: "Courier"; /* Шрифт Courier без резервного */
+}
+
+/* Стили для слова "CSS" */
+.highlight {
+    font-weight: bold; /* Жирный текст */
+    color: blue; /* Синий цвет */
+    font-size: 20px; 
+}

@@ -1,0 +1,27 @@
+/* Стили для ссылок */
+a {
+    text-decoration: none; 
+    text-transform: uppercase; 
+    font-size: 16px; 
+    color: black; 
+}
+a:hover {
+    font-size: 48px; 
+    color: gray; 
+}
+a:visited {
+    font-size: 3px; 
+    color: black; 
+}
+
+/* Стили для заголовков */
+h1:first-letter,
+h2:first-letter,
+h3:first-letter,
+h4:first-letter,
+h5:first-letter,
+h6:first-letter {
+    font-size: 200%; 
+    color: gray; 
+    
+}

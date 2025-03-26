@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahden lohkon sivu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        #vasen, #oikea {
+            padding: 20px;
+            border: 1px solid #000;
+        }
+
+        #vasen {
+            margin-right: 20px;
+        }
+
+        a {
+            display: block;
+            margin-bottom: 10px;
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        #oikea > p {
+            display: none;
+        }
+
+        #oikea > p.active {
+            display: block;
+        }
+
+        /* Скрываем секцию valokuvat по умолчанию */
+        #valokuvat {
+            display: none;
+        }
+
+        /* Показываем активный элемент */
+        #valokuvat.active {
+            display: block;
+        }
+    </style>
+    <script>
+        function showContent(contentId) {
+            // Убираем класс active со всех p-элементов
+            document.querySelectorAll('#oikea > p').forEach(p => p.classList.remove('active'));
+
+            // Делаем видимым только нужный элемент
+            const target = document.getElementById(contentId);
+            if (target) {
+                target.classList.add('active');
+            }
+        }
+    </script>
+    <script>
+        // Добавляем в функцию showContent логику для показа div "valokuvat"
+        function showContent(contentId) {
+            // Убираем класс active со всех элементов
+            document.querySelectorAll('#oikea > *').forEach(el => el.classList.remove('active'));
+    
+            // Делаем видимым только нужный элемент
+            const target = document.getElementById(contentId);
+            if (target) {
+                target.classList.add('active');
+            }
+        }
+    
+        // Функция для смены изображений при наведении мыши
+        function changeImage(imgId, newSrc) {
+            const img = document.getElementById(imgId);
+            if (img) {
+                img.src = newSrc;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div id="vasen">
+            <a id="link1" href="javascript:void(0);" onclick="showContent('osoite')">Yhteistiedot</a>
+            <a id="link2" href="javascript:void(0);" onclick="showContent('kartta')">Kartta</a>
+        </div>
+        <div id="oikea">
+            <p id="osoite">Savonia AMK Microkatu 1</p>
+            <p id="kartta">Savonian campusalueen kartta</p>
+        </div>
+    </div>
+    <div id="vasen">
+        <a id="link3" href="javascript:void(0);" onclick="showContent('valokuvat')">Valokuvat</a>
+    </div>
+    <div id="oikea">
+        <div id="valokuvat">
+            <img id="kuva1" src="kuva1.png" width="50" height="50" 
+                 onmouseover="changeImage('kuva1', '30b_hover.png')" 
+                 onmouseout="changeImage('kuva1', '30a.png')" 
+                 alt="Kuva 1">
+            <img id="kuva2" src="kuva2.png" width="50" height="50" 
+                 onmouseover="changeImage('kuva2', '30a_hover.png')" 
+                 onmouseout="changeImage('kuva2', '30b.png')" 
+                 alt="Kuva 2">
+        </div>
+    </div>
+</body>
+</html>

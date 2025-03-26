@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <!--18-21 tehtävät-->
+    <h1>Päivämäärän tarkistus</h1>
+    <label for="pvm">Anna päivämäärä (dd.mm.yyyy):</label>
+    <input type="text" id="pvm" placeholder="Esim. 01.01.2000">
+    <button id="tarkista">Tarkista</button>
+    <p id="tulos"></p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('#tarkista').onclick = () => {
+                const pvm = document.querySelector('#pvm').value;
+                const tulos = teht21(pvm);
+                document.querySelector('#tulos').textContent = tulos ? "true" : "false";
+            };
+        });
+    </script>
+
+    <!--22-25 tehtävät-->
+                        <!--tehtävä 22-->
+    <h1>Etunimilista</h1>
+    
+    <!-- ul-элемент с именами -->
+    <ul id="lista">
+        <li>Maija</li>
+        <li>Liisa</li>
+        <li>Kalle</li>
+        <li>Antti</li>
+        <li>Tiina</li>
+    </ul>
+
+    <!-- Поле ввода для результата -->
+    <input type="text" id="results" readonly>
+    
+    <!-- Кнопка для вызова функции -->
+    <button id="tulosta">Tulosta</button>
+    <script>
+    // Добавляем обработчик события на кнопку
+    document.getElementById('tulosta').addEventListener('click', () => {
+        const namesArray = teht22('lista'); // Вызываем функцию с id списка
+        const namesString = namesArray.join(','); // Преобразуем массив в строку
+        document.getElementById('results').value = namesString; // Показываем результат в input
+    });
+</script>
+
+                        <!--tehtävä 23 24-->
+
+        <h1>Lisää Käyttäjä</h1>
+
+        <!-- Форма для ввода данных -->
+        <form id="data">
+            <label for="etunimi">Etunimi:</label>
+            <input type="text" id="etunimi" placeholder="Anna etunimi" required>
+            <br>
+            <label for="lahiosoite">Lähiosoite:</label>
+            <input type="text" id="lahiosoite" placeholder="Anna lähiosoite" required>
+            <br>
+            <button type="button" id="lisaa">Lisää</button>
+            <button type="button" id="lisaa_24">Lisää ja tarkista</button>
+        </form>
+        
+    
+        <h2>Tulokset</h2>
+        
+        <!-- Таблица для добавления пользователей -->
+        <table id="results_23" border="1">
+            <tbody>
+                <!-- Новые строки добавляются сюда -->
+            </tbody>
+        </table>
+        <script>
+            document.getElementById('lisaa').addEventListener('click', () => {
+                const etunimi = document.getElementById('etunimi').value.trim();
+                const lahiosoite = document.getElementById('lahiosoite').value.trim();
+
+                if (!etunimi || !lahiosoite) {
+                    alert("Täytä molemmat kentät!");
+                    return;
+                }
+
+                // Найдите <tbody> таблицы
+                const tableBody = document.getElementById('results_23').querySelector('tbody');
+
+                // Создайте новую строку
+                const newRow = tableBody.insertRow();
+
+                // Добавьте ячейки с данными
+                const nameCell = newRow.insertCell(0);
+                const addressCell = newRow.insertCell(1);
+
+                nameCell.textContent = etunimi;
+                addressCell.textContent = lahiosoite;
+
+                // Очистите поля ввода
+                document.getElementById('etunimi').value = '';
+                document.getElementById('lahiosoite').value = '';
+            });
+
+        
+            document.getElementById('lisaa_24').addEventListener('click', () => {
+                const etunimi = document.getElementById('etunimi');
+                const lahiosoite = document.getElementById('lahiosoite');
+
+                let valid = true;
+
+                // Проверяем, заполнено ли поле etunimi
+                if (!etunimi.value.trim()) {
+                    etunimi.style.backgroundColor = 'red';
+                    valid = false;
+                } else {
+                    etunimi.style.backgroundColor = ''; // Сбрасываем цвет фона
+                }
+
+                // Проверяем, заполнено ли поле lahiosoite
+                if (!lahiosoite.value.trim()) {
+                    lahiosoite.style.backgroundColor = 'red';
+                    valid = false;
+                } else {
+                    lahiosoite.style.backgroundColor = ''; // Сбрасываем цвет фона
+                }
+
+                // Если все поля заполнены, добавляем данные в таблицу
+                if (valid) {
+                    const tableBody = document.getElementById('results_23').querySelector('tbody');
+                    const newRow = tableBody.insertRow();
+
+                    const nameCell = newRow.insertCell(0);
+                    const addressCell = newRow.insertCell(1);
+
+                    nameCell.textContent = etunimi.value.trim();
+                    addressCell.textContent = lahiosoite.value.trim();
+
+                    // Очищаем поля ввода после добавления
+                    etunimi.value = '';
+                    lahiosoite.value = '';
+                }
+            });
+
+
+        </script>
+
+                        <!--tehtävä 25-->
+        <h1>Choose an Article</h1>
+
+        <!-- Ссылки для отображения статей -->
+        <nav>
+            <a href="#" id="link1">Show Article 1</a> |
+            <a href="#" id="link2">Show Article 2</a> |
+            <a href="#" id="link3">Show Article 3</a> |
+            <a href="#" id="link4">Show Article 4</a>
+        </nav>
+        
+        <!-- Статьи -->
+        <article id="article1">
+            <h2>Article 1</h2>
+            <p>This is the content of Article 1.</p>
+        </article>
+    
+        <article id="article2">
+            <h2>Article 2</h2>
+            <p>This is the content of Article 2.</p>
+        </article>
+    
+        <article id="article3">
+            <h2>Article 3</h2>
+            <p>This is the content of Article 3.</p>
+        </article>
+    
+        <article id="article4">
+            <h2>Article 4</h2>
+            <p>This is the content of Article 4.</p>
+        </article>
+                      
+
+
+</body>
+    <script src="tehtavat.js"></script>
+
+</html>

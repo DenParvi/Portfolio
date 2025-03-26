@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "nav main aside"
+        "footer footer footer";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 10px; /* Белая полоса между блоками */
+    margin: 20px; /* Отступ от краев окна браузера */
+    background-color: white; /* Фон между блоками */
+}
+
+header,
+nav,
+main,
+aside,
+footer {
+    background-color: yellow; /* Жёлтый фон для всех блоков */
+    padding: 10px; /* Внутренний отступ */
+}
+
+header {
+    grid-area: header;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav {
+    grid-area: nav;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 10px 0;
+}
+
+main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две колонки */
+    gap: 10px; /* Белая полоса между текстовыми блоками */
+}
+
+main .text-box {
+    background-color: yellow; /* Жёлтый фон */
+    border: 1px solid black; /* Черная рамка */
+    padding: 10px;
+}
+
+aside {
+    grid-area: aside;
+    display: grid;
+    gap: 10px; /* Промежуток между рекламными блоками */
+}
+
+aside .ad-box {
+    background-color: yellow;
+    border: 1px solid black;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    grid-area: footer;
+    text-align: center;
+    font-weight: bold;
+    
+}

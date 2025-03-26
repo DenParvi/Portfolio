@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilmoittautumistiedot</title>
+    <link rel="stylesheet" href="teht16.css">
+</head>
+<body>
+    <form class="form-container">
+        <label for="name">Nimi:</label>
+        <input type="text" id="name" name="name" placeholder="Maija">
+
+        <label for="year">Vuosikurssi:</label>
+        <input type="text" id="year" name="year" placeholder="....">
+
+        <label for="school">Oppilaitos:</label>
+        <input type="text" id="school" name="school" value="Savonia AMK" readonly>
+
+        <label for="course">Kurssin nimi:</label>
+        <select id="course" name="course">
+            <option value="TKJ">TKJ</option>
+        </select>
+
+        <label for="delivery">Kurssin toteutus:</label>
+        <select id="delivery" name="delivery">
+            <option value="etäopetus">etäopetus</option>
+        </select>
+
+        <label for="gender">Sukupuoli:</label>
+        <div class="gender-container">
+            <div class="gender-option">
+                <span>mies</span>
+                <input type="radio" name="gender" value="mies">
+            </div>
+            <div class="gender-option">
+                <span>nainen</span>
+                <input type="radio" name="gender" value="nainen">
+            </div>
+            <div class="gender-option">
+                <span>en kommentoi</span>
+                <input type="radio" name="gender" value="en_kommentoi">
+            </div>
+        </div>
+
+        <label for="hobbies">Harrastukset:</label>
+        <div class="hobbies">
+            <div class="hobby-option">
+                <span>ATK-pelit</span>
+                <input type="checkbox" name="hobbies" value="atk">
+            </div>
+            <div class="hobby-option">
+                <span>Tietokonepelit</span>
+                <input type="checkbox" name="hobbies" value="computer">
+            </div>
+            <div class="hobby-option">
+                <span>PC-pelit</span>
+                <input type="checkbox" name="hobbies" value="pc">
+            </div>
+            <div class="hobby-option">
+                <span>Videopelit</span>
+                <input type="checkbox" name="hobbies" value="video">
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button type="reset">Tyhjennä</button>
+            <button type="submit">Lähetä</button>
+        </div>
+    </form>
+</body>
+
+</html>

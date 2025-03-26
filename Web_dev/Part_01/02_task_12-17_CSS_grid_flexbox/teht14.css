@@ -1,0 +1,52 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white; /* Белый фон страницы */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: lightgray; 
+    margin: 20px; 
+}
+
+.link {
+    text-decoration: none; /* Убирает подчеркивание */
+    color: blue; /* Цвет текста */
+    font-weight: bold;
+}
+
+.dropdown {
+    padding: 5px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Расстояние между поисковым полем и кнопкой */
+}
+
+.search-box {
+    padding: 5px;
+}
+
+.search-box::placeholder {
+    color: gray; /* Цвет текста в placeholder */
+}
+.search-button {
+    padding: 5px 10px;
+    border: 1px solid black;
+    background-color: white;
+    cursor: pointer;
+}
+.link-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}

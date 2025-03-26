@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asiakastietojen Haku</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        #dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <h1>Asiakastietojen Haku</h1>
+    <form id="hakulomake">
+        <label for="nimi">Nimi:</label>
+        <input type="text" id="nimi" name="nimi">
+        <label for="osoite">Osoite:</label>
+        <input type="text" id="osoite" name="osoite">
+        <label for="asty">Asiakastyyppi:</label>
+        <select id="asty" name="asty">
+            <option value="0">Ei valinta</option>
+        </select>
+        <button type="button" id="haeNappi">Hae</button>
+    </form>
+    <button id="lisaa_asiakas">Lisää Asiakas</button>
+    <table id="asiakkaat">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Osoite</th>
+                <th>Postinumero</th>
+                <th>Postitoimipaikka</th>
+                <th>Luontipäivämäärä</th>
+                <th>Asiakastyyppi</th>
+                <th>Toiminnot</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be appended here -->
+        </tbody>
+    </table>
+
+    <!-- Dialog -->
+    <div id="overlay"></div>
+    <div id="dialog">
+        <form id="lisaa_form">
+            <label for="nimi_lisays">Nimi:</label>
+            <input type="text" id="nimi_lisays" name="nimi"><br>
+            <label for="osoite_lisays">Osoite:</label>
+            <input type="text" id="osoite_lisays" name="osoite"><br>
+            <label for="postinro_lisays">Postinumero:</label>
+            <input type="text" id="postinro_lisays" name="postinro"><br>
+            <label for="postitmp_lisays">Postitoimipaikka:</label>
+            <input type="text" id="postitmp_lisays" name="postitmp"><br>
+            <label for="asty_lisays">Asiakastyyppi:</label>
+            <select id="asty_lisays" name="asty">
+                <option value="0">Ei valinta</option>
+            </select><br>
+            <button type="button" id="tallenna_asiakas">Tallenna</button>
+            <button type="button" id="peruuta_asiakas">Peruuta</button>
+        </form>
+    </div>
+    
+    <script>
+        $(document).ready(function () {
+    // Fetch customer types and populate the dropdowns
+    $.get("https://codez.savonia.fi/jussi/api/asiakas/tyypit.php", function (data) {
+        if (Array.isArray(data)) {
+            data.forEach(type => {
+                const option = `<option value="${type.avain}">${type.selite || type.lyhenne}</option>`;
+                $("#asty").append(option);
+                $("#asty_lisays").append(option);
+            });
+        }
+    }).fail(function () {
+        alert("Asiakastyyppien haku epäonnistui!");
+    });
+
+    // Attach click event to search button
+    $("#haeNappi").on("click", fetch);
+
+    function fetch() {
+        const nimi = $("#nimi").val();
+        const osoite = $("#osoite").val();
+        const asty = $("#asty").val();
+        const url = `https://codez.savonia.fi/jussi/api/asiakas/haku.php`;
+
+        const queryParams = [];
+        if (nimi) queryParams.push(`nimi=${encodeURIComponent(nimi)}`);
+        if (osoite) queryParams.push(`osoite=${encodeURIComponent(osoite)}`);
+        if (asty && asty !== "0") queryParams.push(`asty_avain=${encodeURIComponent(asty)}`);
+        const queryString = queryParams.length > 0 ? `?${queryParams.join("&")}` : "";
+
+        $.get(url + queryString, function (data) {
+            const tbody = $("#asiakkaat tbody");
+            tbody.empty();
+
+            if (Array.isArray(data)) {
+                data.forEach(item => {
+                    const row = `
+                        <tr>
+                            <td>${item.nimi || ""}</td>
+                            <td>${item.osoite || ""}</td>
+                            <td>${item.postinro || ""}</td>
+                            <td>${item.postitmp || ""}</td>
+                            <td>${item.luontipvm || ""}</td>
+                            <td>${item.asty_avain || ""}</td>
+                            <td>
+                                <button class="muuta-nappi" data-avain="${item.avain}">Muuta</button>
+                                <button id="poista_${item.avain}" onclick="poista(${item.avain})">Poista</button>
+                            </td>
+                        </tr>
+                    `;
+                    tbody.append(row);
+                });
+            } else {
+                tbody.append(`<tr><td colspan="7">Ei tuloksia</td></tr>`);
+            }
+        }).fail(function () {
+            alert("Tietojen haku epäonnistui!");
+        });
+    }
+
+    // Adding a new customer
+    $("#lisaa_asiakas").on("click", function () {
+        $("#overlay, #dialog").show();
+    });
+
+    $("#tallenna_asiakas").on("click", function () {
+        const data = {
+            nimi: $("#nimi_lisays").val(),
+            osoite: $("#osoite_lisays").val(),
+            postinro: $("#postinro_lisays").val(),
+            postitmp: $("#postitmp_lisays").val(),
+            asty_avain: $("#asty_lisays").val()
+        };
+
+        const url = "https://codez.savonia.fi/jussi/api/asiakas/lisaa.php";
+
+        $.post(url, data, function (response) {
+            if (response && response.status === "ok") {
+                alert("Asiakas lisätty onnistuneesti!");
+                $("#overlay, #dialog").hide();
+                fetch();
+            } else {
+                alert("Virhe lisättäessä: " + response.status_text);
+            }
+        }).fail(function () {
+            alert("Asiakkaan lisäys epäonnistui! Yritä uudelleen.");
+        });
+    });
+
+    $("#peruuta_asiakas").on("click", function () {
+        $("#overlay, #dialog").hide();
+    });
+
+    // Editing an existing customer
+    $(document).on("click", ".muuta-nappi", function () {
+        const avain = $(this).data("avain");
+        avaaMuutosDialog(avain);
+    });
+
+    function avaaMuutosDialog(avain) {
+        const url = `https://codez.savonia.fi/jussi/api/asiakas/haku.php?avain=${avain}`;
+
+        $.get(url, function (data) {
+            if (data && Array.isArray(data) && data.length > 0) {
+                const asiakas = data[0];
+                $("#nimi_lisays").val(asiakas.nimi || "");
+                $("#osoite_lisays").val(asiakas.osoite || "");
+                $("#postinro_lisays").val(asiakas.postinro || "");
+                $("#postitmp_lisays").val(asiakas.postitmp || "");
+                $("#asty_lisays").val(asiakas.asty_avain || "0");
+
+                $("#overlay, #dialog").show();
+
+                $("#tallenna_asiakas").off("click").on("click", function () {
+                    tallennaMuutos(avain);
+                });
+            } else {
+                alert("Tietojen haku epäonnistui!");
+            }
+        }).fail(function () {
+            alert("Tietojen haku epäonnistui!");
+        });
+    }
+
+    function tallennaMuutos(avain) {
+        const data = {
+            avain: avain,
+            nimi: $("#nimi_lisays").val(),
+            osoite: $("#osoite_lisays").val(),
+            postinro: $("#postinro_lisays").val(),
+            postitmp: $("#postitmp_lisays").val(),
+            asty_avain: $("#asty_lisays").val()
+        };
+
+        const url = `https://codez.savonia.fi/jussi/api/asiakas/muuta.php`;
+
+        $.post(url, data, function (response) {
+            if (response && response.status === "ok") {
+                alert("Tiedot päivitetty onnistuneesti!");
+                $("#overlay, #dialog").hide();
+                fetch();
+            } else {
+                alert("Virhe tallennettaessa: " + response.status_text);
+            }
+        }).fail(function () {
+            alert("Tietojen päivitys epäonnistui!");
+        });
+    }
+
+    // Deleting a customer
+    window.poista = function (avain) {
+        const url = `https://codez.savonia.fi/jussi/api/asiakas/poista.php?avain=${avain}`;
+
+        $.get(url, function (response) {
+            if (response && response.status === "ok") {
+                alert("Asiakas poistettu onnistuneesti!");
+                fetch();
+            } else {
+                alert("Virhe poistettaessa: " + response.status_text);
+            }
+        }).fail(function () {
+            alert("Asiakkaan poisto epäonnistui!");
+        });
+    };
+});
+
+    </script>
+</body>
+</html>

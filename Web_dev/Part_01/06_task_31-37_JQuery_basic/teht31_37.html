@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <style>
+        #virhe {
+            color: red;
+        }
+        #tulos {
+            color: green;
+        }
+        #pvm_result {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label for="etunimi">Nimi:</label>
+        <input type="text" id="etunimi">
+        <br>
+        <label for="osoite">Osoite:</label>
+        <input type="text" id="osoite">
+        <br>
+        <button type="button" id="tallenna">Tallenna</button>
+        <button type="button" id="lisaa">Lisää</button>
+    </form>
+    <p id="virhe"></p>
+    <p id="tulos"></p>
+    <p id="error"></p>
+    <select id="results"></select>
+    <br>
+    <label for="pvm">Syntymäpäivä:</label>
+    <input type="text" id="pvm">
+    <p id="pvm_result" style="color: red;">Pvm:ää ei ole valittu</p>
+    <br>
+    <label for="autoc">Syntymäpaikka:</label>
+    <input type="text" id="autoc">
+
+    <button id="rekisteroidy">Rekisteröidy</button>
+    <div id="dialog" title="Rekisteröityminen" style="display: none;">
+        <form>
+            <label for="d_nimi">Nimi:</label>
+            <input type="text" id="d_nimi">
+            <br>
+            <label for="d_tunnus">Tunnus:</label>
+            <input type="text" id="d_tunnus">
+            <br>
+            <h3 id="d_error" style="color: red;"></h3>
+            <button type="button" id="save">Tallenna</button>
+            <button type="button" id="cancel">Peruuta</button>
+        </form>
+    </div>
+    <p id="d_content" style="display: none;">Tämä oli alunperin piilossa, mutta näkyykö nyt?</p>
+    <p id="d_results"></p>
+
+    <button id="hae_tyypit">Hae tyypit</button>
+    <button id="hae_data">Hae data</button>
+    <br><br>
+    <select id="tuotetyypit">
+        <option value="">Valitse tuotetyyppi</option>
+    </select>
+    <br><br>
+    <table id="tuotteet" border="1">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Selite</th>
+                <th>Tyyppi ID</th>
+                <th>Ostopvm</th>
+                <th>Valmistaja</th>
+                <th>Hinta</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <form>
+        <!-- Поле для ввода имени -->
+        <label for="nimi_he">Nimi:</label>
+        <input type="text" id="nimi_he">
+        <br>
+        <!-- Поле для ввода производителя -->
+        <label for="valmistaja_he">Valmistaja:</label>
+        <input type="text" id="valmistaja_he">
+        <br>
+        <!-- Выпадающий список для типа товара -->
+        <label for="tuotetyypit_he">Tuotetyyppi:</label>
+        <select id="tuotetyypit_he">
+            <option value="-1">Valitse tuotetyyppi</option>
+        </select>
+        <br><br>
+        <!-- Кнопка для выполнения поиска -->
+        <button type="button" id="hae">Hae data</button>
+    </form>
+    <!-- Таблица для отображения найденных данных -->
+    <table id="tuotteet" border="1">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Kuvaus</th>
+                <th>Tuotetyyppi</th>
+                <th>Ostopäivä</th>
+                <th>Valmistaja</th>
+                <th>Hinta</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            // Функция проверки данных
+            function validateData(etunimi, osoite) {
+                const errors = [];
+                if (etunimi.length < 5) {
+                    errors.push("Etunimi on liian lyhyt.");
+                }
+                if (osoite.length < 5) {
+                    errors.push("Osoite on liian lyhyt.");
+                }
+                return errors;
+            }
+
+            // Обработка нажатия кнопки Tallenna
+            $('#tallenna').on('click', function () {
+                const etunimi = $('#etunimi').val().trim();
+                const osoite = $('#osoite').val().trim();
+
+                $('#virhe').text('');
+                $('#tulos').text('');
+
+                const errors = validateData(etunimi, osoite);
+
+                if (errors.length > 0) {
+                    $('#virhe').text("Pakollisia tietoja puuttuu: " + errors.join(' '));
+                } else {
+                    $('#tulos').text(`${etunimi},${osoite}`);
+                }
+            });
+
+            // Обработка нажатия кнопки Lisää
+            $('#lisaa').on('click', function () {
+                const etunimi = $('#etunimi').val().trim();
+                const osoite = $('#osoite').val().trim();
+
+                $('#error').text(''); // Очищаем сообщение об ошибке
+
+                const errors = validateData(etunimi, osoite);
+
+                if (errors.length > 0) {
+                    $('#error').text("Pakollisia tietoja puuttuu: " + errors.join(' '));
+                    setTimeout(() => {
+                        $('#error').text('');
+                    }, 3000);
+                } else {
+                    $('#results').append(new Option(`${etunimi},${osoite}`, `${etunimi},${osoite}`));
+                }
+            });
+
+        });
+
+        $(document).ready(function () {
+            // Инициализация datepicker
+            $('#pvm').datepicker({
+                dateFormat: 'dd.mm.yy',
+                minDate: new Date(2020, 7, 1), // 1.8.2020
+                maxDate: new Date(2020, 11, 31), // 31.12.2020
+                dayNamesMin: ["Su", "Ma", "Ti", "Ke", "To", "Pe", "La"],
+                monthNames: [
+                    "Tammikuu", "Helmikuu", "Maaliskuu", "Huhtikuu", "Toukokuu", "Kesäkuu",
+                    "Heinäkuu", "Elokuu", "Syyskuu", "Lokakuu", "Marraskuu", "Joulukuu"
+                ],
+                firstDay: 1,
+                onSelect: function (dateText) {
+                    $('#pvm_result').text(`Valittu päivämäärä: ${dateText}`);
+                }
+            });
+
+            // Если дата не выбрана
+            $('#pvm').on('change', function () {
+                if (!$(this).val()) {
+                    $('#pvm_result').text('Pvm:ää ei ole valittu');
+                }
+            });
+        });
+
+        //Tehtävä 33 (не сделано, проблемы с городами)
+        $(document).ready(function () {
+            $('#autoc').autocomplete({
+                source: function (request, response) {
+                    console.log('Отправляем запрос с term:', request.term); // Лог введённого текста
+
+                    $.ajax({
+                        url: 'http://codez.savonia.fi/jussi/api/json_data.php',
+                        dataType: 'json',
+                        data: {
+                            term: request.term // Передаём введённый текст в параметре `term`
+                        },
+                        success: function (data) {
+                            console.log('Ответ сервера:', data); // Лог ответа от сервера
+
+                            // Преобразуем объект в массив
+                            const resultArray = Object.values(data); // Извлекаем значения объекта
+
+                            // Передаём массив Autocomplete UI
+                            response(resultArray.map(function (item) {
+                                return {
+                                    label: item.label, // Отображаемое значение
+                                    value: item.value  // Выбранное значение
+                                };
+                            }));
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Ошибка запроса:', status, error);
+                            response([]); // Пустой список, если ошибка
+                        }
+                    });
+                },
+                minLength: 3, // Минимальная длина текста для поиска
+                select: function (event, ui) {
+                    console.log('Выбранное значение:', ui.item.value); // Лог выбора
+                }
+            });
+
+
+        });
+
+        //Tehtävä 34
+        $(document).ready(function () {
+            // Скрываем контент при загрузке страницы
+            $('#d_content').hide();
+
+            // Инициализируем диалог для регистрации
+            $('#dialog').dialog({
+                autoOpen: false,
+                modal: true,
+                buttons: {
+                    Tallenna: function () {
+                        const nimi = $('#d_nimi').val().trim();
+                        const tunnus = $('#d_tunnus').val().trim();
+
+                        // Проверяем длину данных
+                        if (nimi.length >= 5 && tunnus.length >= 5) {
+                            // Если данные корректны
+                            $('#d_error').text('');
+                            $('#d_content').show();
+                            $('#d_results').text(`${nimi}, ${tunnus}`);
+                            $(this).dialog('close'); // Закрываем диалог
+                        } else {
+                            // Показываем ошибку
+                            $('#d_error').text('Data väärin');
+                        }
+                    },
+                    Peruuta: function () {
+                        $(this).dialog('close'); // Закрываем диалог без сохранения
+                    }
+                }
+            });
+
+            // Обработчик для кнопки "Rekisteröidy"
+            $('#rekisteroidy').on('click', function () {
+                $('#dialog').dialog('open');
+            });
+        });
+
+        //Tehtävä 35 (не работает)
+                $(document).ready(function () {
+            // URL-адреса для запросов
+            const tyyppiUrl = 'http://localhost:3000/tuotetyyppi';
+            const tuoteUrl = 'http://localhost:3000/tuote';
+
+            // Обработчик для кнопки "Hae tyypit"
+            $('#hae_tyypit').on('click', function () {
+                // Очищаем текущие опции в select
+                $('#tuotetyypit').empty().append('<option value="">Valitse tuotetyyppi</option>');
+
+                // Запрос на сервер
+                $.get(tyyppiUrl, function (data) {
+                    console.log('Tuotetyypit:', data);
+                    data.forEach(function (tyyppi) {
+                        $('#tuotetyypit').append(
+                            `<option value="${tyyppi.id}">${tyyppi.nimi}</option>`
+                        );
+                    });
+                }).fail(function () {
+                    alert('Virhe tuotetyyppien haussa.');
+                });
+            });
+
+            // Обработчик для кнопки "Hae data"
+            $('#hae_data').on('click', function () {
+            // Получаем выбранный тип
+            const selectedType = $('#tuotetyypit').val();
+
+            // Очищаем текущие строки в таблице
+            $('#tuotteet tbody').empty();
+
+            if (!selectedType) {
+                alert('Valitse tuotetyyppi ennen kuin haet dataa.');
+                return;
+            }
+
+            // Запрос на сервер
+            $.get(tuoteUrl, function (data) {
+                console.log('Tuotteet:', data);
+
+                // Фильтруем данные по выбранному типу
+                const filteredData = data.filter(function (tuote) {
+                    return tuote.tyyppi_id == selectedType;
+                });
+
+                // Проверяем, есть ли данные после фильтрации
+                if (filteredData.length === 0) {
+                    alert('Ei löytynyt tuotteita valitulla tuotetyypillä.');
+                    return;
+                }
+
+                // Отображаем данные в таблице
+                filteredData.forEach(function (tuote) {
+                    $('#tuotteet tbody').append(
+                        `<tr>
+                            <td>${tuote.nimi}</td>
+                            <td>${tuote.selite}</td>
+                            <td>${tuote.tyyppi_id}</td>
+                            <td>${tuote.ostopvm}</td>
+                            <td>${tuote.valmistaja}</td>
+                            <td>${tuote.hinta}</td>
+                        </tr>`
+                    );
+                });
+            }).fail(function () {
+                alert('Virhe tuotteiden haussa.');
+            });
+        });
+
+
+        });
+
+            //Tehtävä 36 (ничего не работает в тестах)
+            $(document).ready(function () {
+                const tyyppiUrl = 'http://localhost:3000/tuotetyyppi'; // URL для получения типов товаров
+                const hakuUrl = 'http://localhost:3000/tuote'; // URL для поиска товаров
+
+                // Загрузка типов товаров в выпадающий список при загрузке страницы
+                $.get(tyyppiUrl, function (data) {
+                    const $dropdown = $('#tuotetyypit_he'); // Ссылка на выпадающий список
+                    $dropdown.empty(); // Очищаем старые данные
+                    $dropdown.append('<option value="-1">Valitse tuotetyyppi</option>'); // Пустое значение
+
+                    // Заполнение списка
+                    data.forEach(function (tyyppi) {
+                        $dropdown.append(`<option value="${tyyppi.id}">${tyyppi.nimi}</option>`);
+                    });
+                }).fail(function () {
+                    alert('Virhe tuotetyyppien haussa.'); // Ошибка при загрузке типов товаров
+                });
+
+                // Выполнение поиска при нажатии на кнопку "Hae data"
+                $('#hae').on('click', function () {
+                    const nimi = $('#nimi_he').val().trim(); // Получение значения имени
+                    const valmistaja = $('#valmistaja_he').val().trim(); // Получение значения производителя
+                    const tyyppiId = $('#tuotetyypit_he').val(); // Получение выбранного типа товара
+
+                    // Формирование параметров запроса
+                    const params = {};
+                    if (nimi) params.nimi = nimi;
+                    if (valmistaja) params.valmistaja = valmistaja;
+                    if (tyyppiId !== "-1") params.tyyppi_id = tyyppiId;
+
+                    // Преобразование параметров в строку
+                    const queryString = $.param(params);
+
+                    // Выполнение запроса
+                    $.get(`${hakuUrl}?${queryString}`, function (data) {
+                        const $tableBody = $('#tuotteet tbody'); // Таблица для отображения результатов
+                        $tableBody.empty(); // Очищаем старые данные
+
+                        if (data.length === 0) {
+                            $tableBody.append('<tr><td colspan="6">Ei tuloksia</td></tr>'); // Если результатов нет
+                        } else {
+                            // Отображение данных в таблице
+                            data.forEach(function (tuote) {
+                                $tableBody.append(`
+                                    <tr>
+                                        <td>${tuote.nimi}</td>
+                                        <td>${tuote.selite}</td>
+                                        <td>${tuote.tyyppi_id}</td>
+                                        <td>${tuote.ostopvm}</td>
+                                        <td>${tuote.valmistaja}</td>
+                                        <td>${tuote.hinta}</td>
+                                    </tr>
+                                `);
+                            });
+                        }
+                    }).fail(function () {
+                        alert('Virhe tuotteiden haussa.'); // Ошибка при выполнении поиска
+                    });
+                });
+            });
+
+
+// Tehtävä 37
+
+$(document).ready(function () {
+    const tyyppiUrl = 'http://localhost:3000/tuotetyyppi'; // URL для получения типов товаров
+    const hakuUrl = 'http://localhost:3000/tuote'; // URL для поиска товаров
+
+    // Загрузка типов товаров в выпадающий список
+    $.get(tyyppiUrl, function (data) {
+        const $dropdown = $('#tuotetyypit_he');
+        $dropdown.empty();
+        $dropdown.append('<option value="-1">Valitse tuotetyyppi</option>');
+        data.forEach(function (tyyppi) {
+            $dropdown.append(`<option value="${tyyppi.id}">${tyyppi.nimi}</option>`);
+        });
+    }).fail(function () {
+        alert('Virhe tuotetyyppien haussa.');
+    });
+
+    // Выполнение поиска
+    $('#hae').on('click', function () {
+        const nimi = $('#nimi_he').val().trim();
+        const valmistaja = $('#valmistaja_he').val().trim();
+        const tyyppiId = $('#tuotetyypit_he').val();
+
+        const params = {};
+        if (nimi) params.nimi = nimi;
+        if (valmistaja) params.valmistaja = valmistaja;
+        if (tyyppiId !== "-1") params.tyyppi_id = tyyppiId;
+
+        const queryString = $.param(params);
+
+        $.get(`${hakuUrl}?${queryString}`, function (data) {
+            const $tableBody = $('#tuotteet tbody');
+            $tableBody.empty();
+
+            if (data.length === 0) {
+                $tableBody.append('<tr><td colspan="7">Ei tuloksia</td></tr>');
+            } else {
+                data.forEach(function (tuote) {
+                    $tableBody.append(`
+                        <tr id="tuote-${tuote.id}">
+                            <td>${tuote.nimi}</td>
+                            <td>${tuote.selite}</td>
+                            <td>${tuote.tyyppi_id}</td>
+                            <td>${tuote.ostopvm}</td>
+                            <td>${tuote.valmistaja}</td>
+                            <td>${tuote.hinta}</td>
+                            <td>
+                                <button class="poista-btn" data-id="${tuote.id}" id="poista_${tuote.id}">
+                                    Poista
+                                </button>
+                            </td>
+                        </tr>
+                    `);
+                });
+
+                // Добавление обработчиков для кнопок "Poista"
+                $('.poista-btn').on('click', function () {
+                    const tuoteId = $(this).data('id'); // Получаем ID товара
+                    if (confirm('Haluatko varmasti poistaa tämän tuotteen?')) {
+                        $.ajax({
+                            url: `${hakuUrl}/${tuoteId}`,
+                            method: 'DELETE',
+                            success: function () {
+                                alert('Tuote poistettu onnistuneesti.');
+                                // Повторная загрузка данных
+                                $('#hae').click();
+                            },
+                            error: function () {
+                                alert('Virhe tuotteen poistamisessa.');
+                            }
+                        });
+                    }
+                });
+            }
+        }).fail(function () {
+            alert('Virhe tuotteiden haussa.');
+        });
+    });
+});
+
+
+
+
+
+    </script>
+</body>
+</html>

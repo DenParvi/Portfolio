@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap teht17a</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- LOHKO 1: Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- Логотип -->
+            <a class="navbar-brand" href="#">
+                <img src="savonialogo.png" alt="Savonia Logo" width="120" height="32">
+            </a>
+    
+            <!-- Поля ввода -->
+            <form class="d-flex ms-3">
+                <input class="form-control me-2" type="text" placeholder="Tunnus" aria-label="Tunnus">
+                <input class="form-control me-2" type="password" placeholder="Salasana" aria-label="Salasana">
+                <button class="btn btn-outline-primary" type="submit">Kirjaudu</button>
+            </form>
+    
+            <!-- Пространство между элементами -->
+            <div class="flex-grow-1"></div>
+    
+            <!-- Ссылки -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Alkuun</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Wilma</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Reppu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Työkalut</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- LOHKO 2-4 Content -->
+    <div class="container-fluid my-4">
+        <div class="row">
+            <!-- LOHKO 2: Forms -->
+            <div class="col-md-4">
+                <form>
+                    <label for="Opiskelijanumero" class="form-label">Opiskelijanumero:</label><input type="text" id="Opiskelijanumero" class="form-control" placeholder="Opiskelijanumero">
+                    
+                    <label for="Aloitusvuosi" class="form-label">Aloitusvuosi:</label><input type="text" id="Aloitusvuosi" class="form-control" placeholder="Aloitusvuosi">
+            
+                    <div>
+                        <input type="checkbox" id="Muista_minut" class="form-check-input"><label for="Muista_minut" class="form-check-label">Muista minut</label>
+                    </div>
+            
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#verificationModal">
+                        Tarkista
+                    </button>
+                </form>
+            </div>
+
+            <!-- LOHKO 3: Table -->
+            <div class="col-md-8">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Opintojakso</th>
+                            <th>Suorituspvm</th>
+                            <th>Arvosana</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ohjelmoinnin perusteet</td>
+                            <td>3.4.2016</td>
+                            <td>2/5</td>
+                        </tr>
+                        <tr>
+                            <td>Tietorakenteet ja algoritmit</td>
+                            <td>16.2.2016</td>
+                            <td>5/5</td>
+                        </tr>
+                        <tr>
+                            <td>Matematiikka I</td>
+                            <td>28.1.2015</td>
+                            <td>4/5</td>
+                        </tr>
+                        <tr>
+                            <td>Matematiikka II</td>
+                            <td>11.9.2015</td>
+                            <td>3/5</td>
+                        </tr>
+                        <tr>
+                            <td>Fysiikka I</td>
+                            <td>28.11.2014</td>
+                            <td>4/5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- LOHKO 4: Footer -->
+        <div class="container-fluid footer">
+            <div class="row mt-4 text-center">
+                <div class="col-md text-start">
+                    <p>© 2017-2018</p>
+                </div>
+                <div class="col-md">
+                    <p><strong>Toimipaikat</strong></p>
+                    <p><a href="#" class="text-decoration-none">Opistotie</a></p>
+                    <p><a href="#" class="text-decoration-none">Technopolis</a></p>
+                    <p><a href="#" class="text-decoration-none">Iisalmi</a></p>
+                    <p><a href="#" class="text-decoration-none">Varkaus</a></p>
+                </div>
+                <div class="col-md">
+                    <p><strong>Tietoja</strong></p>
+                    <p><a href="#" class="text-decoration-none">Yhteystiedot</a></p>
+                    <p><a href="#" class="text-decoration-none">GRPD</a></p>
+                    <p><a href="#" class="text-decoration-none">Ota yhteyttä</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+<div class="modal fade" id="verificationModal" tabindex="-1" aria-labelledby="verificationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="verificationModalLabel">Tietojen tarkistus</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Tarkistatko ovatko ao. tiedot oikein
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tallenna tiedot</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sulje</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
