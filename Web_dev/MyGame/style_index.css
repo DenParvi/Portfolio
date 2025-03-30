@@ -1,0 +1,56 @@
+/* style_index.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ccc;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+  
+  /* Кнопки с картинками */
+  .container button {
+    all: unset;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  /* Зигзаг: смещение строк */
+  .container button:nth-child(odd) {
+    transform: translateY(10%);
+  }
+  .container button:nth-child(even) {
+    transform: translateY(0%);
+  }
+  
+  .container button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Адаптивность для совсем маленьких экранов */
+  @media (max-width: 340px) {
+    .container {
+      gap: 14px 8px;
+      padding: 10px;
+    }
+  }
+  

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генерация места</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <button id="backButton" onclick="window.location.href='index.html'">На главную</button>
+  
+  <div style="position: absolute; top: 10px; right: 10px;">
+    <label>
+      <input type="checkbox" id="leaderModeToggle">
+      Включить место ведущего
+    </label>
+  </div>
+
+  <div class="container">
+    <div id="placesLeft">Осталось: 10</div>
+    <input type="text" id="textInput" placeholder="Ваш ник" maxlength="12">
+    <button id="placeButton" disabled>Получить место</button>
+    <div id="placeDisplay"></div>
+    <button id="allPlacesButton" style="display: none;">Все места</button>
+  </div>
+
+  <script>
+    let leaderMode = false;
+    let places = [];
+    let placesLeft = 0;
+    let placesWithTexts = [];
+
+    function initPlaces() {
+      places = Array.from({ length: leaderMode ? 11 : 10 }, (_, i) => i + 1);
+      placesLeft = places.length;
+      placesWithTexts = [];
+      document.getElementById('placesLeft').textContent = 'Осталось: ' + placesLeft;
+      document.getElementById('placeDisplay').textContent = '';
+      document.getElementById('placeButton').disabled = true;
+      document.getElementById('allPlacesButton').style.display = 'none';
+    }
+
+    // Обновляем массив мест при переключении
+    document.getElementById('leaderModeToggle').addEventListener('change', function () {
+      leaderMode = this.checked;
+      initPlaces();
+    });
+
+    document.getElementById('textInput').addEventListener('input', function () {
+      const inputText = this.value.trim();
+      document.getElementById('placeButton').disabled = inputText.length === 0;
+    });
+
+    document.getElementById('placeButton').addEventListener('click', function () {
+      if (places.length > 0) {
+        let index = Math.floor(Math.random() * places.length);
+        let place = places.splice(index, 1)[0];
+        placesLeft--;
+        document.getElementById('placesLeft').textContent = 'Осталось: ' + placesLeft;
+        const placeDisplay = document.getElementById('placeDisplay');
+        placeDisplay.classList.add('place-number');
+        const inputText = document.getElementById('textInput').value.trim();
+
+        if (leaderMode && place === 11) {
+          placeDisplay.textContent = 'Ведущий';
+        } else {
+          placeDisplay.textContent = 'Место №' + place;
+        }
+
+        placesWithTexts.push({ place, text: inputText });
+        document.getElementById('textInput').value = '';
+        this.disabled = true;
+
+        if (places.length > 0) {
+          document.getElementById('placeButton').disabled = true;
+        }
+
+        if (places.length === 0) {
+          document.getElementById('allPlacesButton').style.display = 'block';
+        }
+      }
+    });
+
+    document.getElementById('allPlacesButton').addEventListener('click', function () {
+      placesWithTexts.sort((a, b) => a.place - b.place);
+      let output = '<table><tr><th>Место</th><th>Текст</th></tr>';
+      placesWithTexts.forEach((item) => {
+        if (leaderMode && item.place === 11) {
+          output += `<tr><td>Ведущий</td><td>${item.text}</td></tr>`;
+        } else {
+          output += `<tr><td>Место №${item.place}</td><td>${item.text}</td></tr>`;
+        }
+      });
+      output += '</table>';
+
+      document.body.innerHTML = '<button id="backButton" onclick="window.location.href=\'index.html\'">На главную</button>' + output;
+    });
+
+    // Инициализация при загрузке
+    window.onload = () => {
+      initPlaces();
+    };
+  </script>
+</body>
+</html>
