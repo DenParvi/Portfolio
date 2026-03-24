@@ -18,7 +18,7 @@ An analytics project based on urban bike rental data from **Kuopio** and **Lahti
 ### Roblox: My Own Game Project
 I am the creator and developer of my own game on the **Roblox** platform. This project includes gameplay design, game mechanics, interaction systems, and implementation of core in-game features.
 
-**Game link:** [Add link here]
+**Game:** [Finnish Sauna Survival](https://www.roblox.com/games/77548475415040/Finnish-Sauna-Survival)
 
 ## Additional Repository Content
 
