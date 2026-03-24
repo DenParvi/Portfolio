@@ -2,7 +2,7 @@
 
 > **English version is available below.**
 
-## 🇫🇮 Suomi
+## Suomi
 
 Tämä repositorio esittelee portfolioni, jonka pääpaino on **Power BI -analytiikassa** ja **Roblox-pelikehityksessä**.
 
@@ -55,7 +55,7 @@ Muu repositorion sisältö osoittaa täydentävää ohjelmointiharjoittelua ja t
 
 ---
 
-## 🇬🇧 English
+## English
 
 This repository showcases my portfolio, with a strong focus on **Power BI analytics** and **Roblox game development**.
 
