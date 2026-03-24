@@ -13,7 +13,7 @@ Other programming materials included in this repository represent additional tec
 ### Power BI: Urban Bike Rental Data Analysis
 An analytics project based on urban bike rental data from **Kuopio** and **Lahti**. The project includes analysis of service usage, user activity patterns, and visualization of key insights through Power BI dashboards and reports.
 
-**Report:** [Add link here]
+**Report:** [[Add link here]](https://app.powerbi.com/view?r=eyJrIjoiNTFkMWNkOWYtNWViNi00ZDc1LTk4ZTUtNmQ0NmZmNzZiMGZlIiwidCI6ImI2ZDU2ODFiLTRhNDAtNGQzYS04ZTdiLTAzYTcwZDM5OTFiNiIsImMiOjh9&pageName=5a58d56c74508588d873)
 
 ### Roblox: My Own Game Project
 I am the creator and developer of my own game on the **Roblox** platform. This project includes gameplay design, game mechanics, interaction systems, and implementation of core in-game features.
