@@ -2,110 +2,122 @@
   <tr>
     <td valign="top" width="50%">
 
-# 📁 Portfolio Overview
+<h1>📁 Portfolio Overview</h1>
 
-Tämä repositorio esittelee portfolioni, jonka pääpaino on **Power BI -analytiikassa** ja **Roblox-pelikehityksessä**.
+<p>Tämä repositorio esittelee portfolioni, jonka pääpaino on <strong>Power BI -analytiikassa</strong> ja <strong>Roblox-pelikehityksessä</strong>.</p>
 
-Tärkeimmät osaamisalueeni ovat:
-- **Analyyttisten raporttien ja dashboardien rakentaminen Power BI:ssä**
-- **Oman pelin kehittäminen Roblox-alustalle**
+<p>Tärkeimmät osaamisalueeni ovat:</p>
+<ul>
+  <li><strong>Analyyttisten raporttien ja dashboardien rakentaminen Power BI:ssä</strong></li>
+  <li><strong>Oman pelin kehittäminen Roblox-alustalle</strong></li>
+</ul>
 
-Muut tässä repositoriossa olevat ohjelmointimateriaalit edustavat täydentävää teknistä harjoittelua ja tukevat muuta kehityskokemustani.
+<p>Muut tässä repositoriossa olevat ohjelmointimateriaalit edustavat täydentävää teknistä harjoittelua ja tukevat muuta kehityskokemustani.</p>
 
-## Featured Projects
+<h2>Featured Projects</h2>
 
-### Power BI: Kaupunkipyörävuokrauksen data-analyysi
-Analytiikkaprojekti, joka perustuu **Kuopion** ja **Lahden** kaupunkipyörävuokrauksen dataan. Projekti sisältää palvelun käytön analysointia, käyttäjäaktiivisuuden tarkastelua sekä keskeisten havaintojen visualisointia Power BI -raporteilla ja dashboardeilla.
+<h3>Power BI: Kaupunkipyörävuokrauksen data-analyysi</h3>
+<p>Analytiikkaprojekti, joka perustuu <strong>Kuopion</strong> ja <strong>Lahden</strong> kaupunkipyörävuokrauksen dataan. Projekti sisältää palvelun käytön analysointia, käyttäjäaktiivisuuden tarkastelua sekä keskeisten havaintojen visualisointia Power BI -raporteilla ja dashboardeilla.</p>
 
-**Raportit:** [Kuopio](https://app.powerbi.com/view?r=eyJrIjoiNTFkMWNkOWYtNWViNi00ZDc1LTk4ZTUtNmQ0NmZmNzZiMGZlIiwidCI6ImI2ZDU2ODFiLTRhNDAtNGQzYS04ZTdiLTAzYTcwZDM5OTFiNiIsImMiOjh9&pageName=5a58d56c74508588d873) | [Lahti](https://app.powerbi.com/view?r=eyJrIjoiNTM4ZjZkMzAtMmUxZS00MjBjLWI0ZmYtMmQ1NjJjYWJkODEyIiwidCI6ImI2ZDU2ODFiLTRhNDAtNGQzYS04ZTdiLTAzYTcwZDM5OTFiNiIsImMiOjh9&pageName=f65c5a6667cf57710eae)
+<p><strong>Raportit:</strong> <a href="https://app.powerbi.com/view?r=eyJrIjoiNTFkMWNkOWYtNWViNi00ZDc1LTk4ZTUtNmQ0NmZmNzZiMGZlIiwidCI6ImI2ZDU2ODFiLTRhNDAtNGQzYS04ZTdiLTAzYTcwZDM5OTFiNiIsImMiOjh9&pageName=5a58d56c74508588d873">Kuopio</a> | <a href="https://app.powerbi.com/view?r=eyJrIjoiNTM4ZjZkMzAtMmUxZS00MjBjLWI0ZmYtMmQ1NjJjYWJkODEyIiwidCI6ImI2ZDU2ODFiLTRhNDAtNGQzYS04ZTdiLTAzYTcwZDM5OTFiNiIsImMiOjh9&pageName=f65c5a6667cf57710eae">Lahti</a></p>
 
-### Roblox: Oma peliprojektini
-Olen oman **Roblox**-alustalle tehdyn pelini kehittäjä ja luoja. Projekti sisältää pelisuunnittelua, pelimekaniikkoja, vuorovaikutusjärjestelmiä sekä pelin keskeisten ominaisuuksien toteutusta.
+<h3>Roblox: Oma peliprojektini</h3>
+<p>Olen oman <strong>Roblox</strong>-alustalle tehdyn pelini kehittäjä ja luoja. Projekti sisältää pelisuunnittelua, pelimekaniikkoja, vuorovaikutusjärjestelmiä sekä pelin keskeisten ominaisuuksien toteutusta.</p>
 
-**Peli:** [Finnish Sauna Survival](https://www.roblox.com/games/77548475415040/Finnish-Sauna-Survival)
+<p><strong>Peli:</strong> <a href="https://www.roblox.com/games/77548475415040/Finnish-Sauna-Survival">Finnish Sauna Survival</a></p>
 
-## Additional Repository Content
+<h2>Additional Repository Content</h2>
 
-Tämä repositorio sisältää myös valikoituja harjoitustöitä ja oppimateriaaleja muilta ohjelmistokehityksen osa-alueilta:
+<p>Tämä repositorio sisältää myös valikoituja harjoitustöitä ja oppimateriaaleja muilta ohjelmistokehityksen osa-alueilta:</p>
 
-- **C#** — ohjelmointiharjoituksia ja koodiesimerkkejä
-- **PowerApps** — tehtäviä ja käytännön projekteja, jotka on tehty Power Platformin opiskelun aikana
-- **Python** — pieniä oppimisprojekteja, algoritmeja ja dataan liittyviä tehtäviä
-- **Web_dev** — web-kehityksen harjoituksia ja projekteja, mukaan lukien toimiva web-sovellus
+<ul>
+  <li><strong>C#</strong> — ohjelmointiharjoituksia ja koodiesimerkkejä</li>
+  <li><strong>PowerApps</strong> — tehtäviä ja käytännön projekteja, jotka on tehty Power Platformin opiskelun aikana</li>
+  <li><strong>Python</strong> — pieniä oppimisprojekteja, algoritmeja ja dataan liittyviä tehtäviä</li>
+  <li><strong>Web_dev</strong> — web-kehityksen harjoituksia ja projekteja, mukaan lukien toimiva web-sovellus</li>
+</ul>
 
-## Supporting Technologies
+<h2>Supporting Technologies</h2>
 
-- Power BI
-- Roblox Studio / Lua
-- Python
-- C#
-- HTML / CSS
-- JavaScript
-- TypeScript
-- React
-- jQuery
-- AJAX
-- Power Platform / PowerApps
+<ul>
+  <li>Power BI</li>
+  <li>Roblox Studio / Lua</li>
+  <li>Python</li>
+  <li>C#</li>
+  <li>HTML / CSS</li>
+  <li>JavaScript</li>
+  <li>TypeScript</li>
+  <li>React</li>
+  <li>jQuery</li>
+  <li>AJAX</li>
+  <li>Power Platform / PowerApps</li>
+</ul>
 
-## About This Portfolio
+<h2>About This Portfolio</h2>
 
-Tämän portfolion pääpaino on **Power BI -data-analytiikassa** ja **Roblox-pelikehityksessä**. Nämä projektit edustavat vahvimpia käytännön kiinnostuksenkohteitani ja osa-alueita, joita haluan erityisesti tuoda esiin.
+<p>Tämän portfolion pääpaino on <strong>Power BI -data-analytiikassa</strong> ja <strong>Roblox-pelikehityksessä</strong>. Nämä projektit edustavat vahvimpia käytännön kiinnostuksenkohteitani ja osa-alueita, joita haluan erityisesti tuoda esiin.</p>
 
-Muu repositorion sisältö osoittaa täydentävää ohjelmointiharjoittelua ja teknistä oppimista, jotka tukevat yleistä kehittymistäni ja monipuolisuuttani.
+<p>Muu repositorion sisältö osoittaa täydentävää ohjelmointiharjoittelua ja teknistä oppimista, jotka tukevat yleistä kehittymistäni ja monipuolisuuttani.</p>
 
     </td>
     <td valign="top" width="50%">
 
-# 📁 Portfolio Overview
+<h1>📁 Portfolio Overview</h1>
 
-This repository showcases my portfolio, with a strong focus on **Power BI analytics** and **Roblox game development**.
+<p>This repository showcases my portfolio, with a strong focus on <strong>Power BI analytics</strong> and <strong>Roblox game development</strong>.</p>
 
-My key areas of work are:
-- **Building analytical reports and dashboards in Power BI**
-- **Developing my own game on the Roblox platform**
+<p>My key areas of work are:</p>
+<ul>
+  <li><strong>Building analytical reports and dashboards in Power BI</strong></li>
+  <li><strong>Developing my own game on the Roblox platform</strong></li>
+</ul>
 
-Other programming materials included in this repository represent additional technical practice and supporting development experience.
+<p>Other programming materials included in this repository represent additional technical practice and supporting development experience.</p>
 
-## Featured Projects
+<h2>Featured Projects</h2>
 
-### Power BI: Urban Bike Rental Data Analysis
-An analytics project based on urban bike rental data from **Kuopio** and **Lahti**. The project includes analysis of service usage, user activity patterns, and visualization of key insights through Power BI dashboards and reports.
+<h3>Power BI: Urban Bike Rental Data Analysis</h3>
+<p>An analytics project based on urban bike rental data from <strong>Kuopio</strong> and <strong>Lahti</strong>. The project includes analysis of service usage, user activity patterns, and visualization of key insights through Power BI dashboards and reports.</p>
 
-**Reports:** [Kuopio](https://app.powerbi.com/view?r=eyJrIjoiNTFkMWNkOWYtNWViNi00ZDc1LTk4ZTUtNmQ0NmZmNzZiMGZlIiwidCI6ImI2ZDU2ODFiLTRhNDAtNGQzYS04ZTdiLTAzYTcwZDM5OTFiNiIsImMiOjh9&pageName=5a58d56c74508588d873) | [Lahti](https://app.powerbi.com/view?r=eyJrIjoiNTM4ZjZkMzAtMmUxZS00MjBjLWI0ZmYtMmQ1NjJjYWJkODEyIiwidCI6ImI2ZDU2ODFiLTRhNDAtNGQzYS04ZTdiLTAzYTcwZDM5OTFiNiIsImMiOjh9&pageName=f65c5a6667cf57710eae)
+<p><strong>Reports:</strong> <a href="https://app.powerbi.com/view?r=eyJrIjoiNTFkMWNkOWYtNWViNi00ZDc1LTk4ZTUtNmQ0NmZmNzZiMGZlIiwidCI6ImI2ZDU2ODFiLTRhNDAtNGQzYS04ZTdiLTAzYTcwZDM5OTFiNiIsImMiOjh9&pageName=5a58d56c74508588d873">Kuopio</a> | <a href="https://app.powerbi.com/view?r=eyJrIjoiNTM4ZjZkMzAtMmUxZS00MjBjLWI0ZmYtMmQ1NjJjYWJkODEyIiwidCI6ImI2ZDU2ODFiLTRhNDAtNGQzYS04ZTdiLTAzYTcwZDM5OTFiNiIsImMiOjh9&pageName=f65c5a6667cf57710eae">Lahti</a></p>
 
-### Roblox: My Own Game Project
-I am the creator and developer of my own game on the **Roblox** platform. This project includes gameplay design, game mechanics, interaction systems, and implementation of core in-game features.
+<h3>Roblox: My Own Game Project</h3>
+<p>I am the creator and developer of my own game on the <strong>Roblox</strong> platform. This project includes gameplay design, game mechanics, interaction systems, and implementation of core in-game features.</p>
 
-**Game:** [Finnish Sauna Survival](https://www.roblox.com/games/77548475415040/Finnish-Sauna-Survival)
+<p><strong>Game:</strong> <a href="https://www.roblox.com/games/77548475415040/Finnish-Sauna-Survival">Finnish Sauna Survival</a></p>
 
-## Additional Repository Content
+<h2>Additional Repository Content</h2>
 
-This repository also includes selected practice work and learning materials in other areas of software development:
+<p>This repository also includes selected practice work and learning materials in other areas of software development:</p>
 
-- **C#** — programming exercises and code samples
-- **PowerApps** — assignments and practical projects built while studying Power Platform
-- **Python** — small educational projects, algorithms, and data-related tasks
-- **Web_dev** — web development exercises and projects, including a functional web application
+<ul>
+  <li><strong>C#</strong> — programming exercises and code samples</li>
+  <li><strong>PowerApps</strong> — assignments and practical projects built while studying Power Platform</li>
+  <li><strong>Python</strong> — small educational projects, algorithms, and data-related tasks</li>
+  <li><strong>Web_dev</strong> — web development exercises and projects, including a functional web application</li>
+</ul>
 
-## Supporting Technologies
+<h2>Supporting Technologies</h2>
 
-- Power BI
-- Roblox Studio / Lua
-- Python
-- C#
-- HTML / CSS
-- JavaScript
-- TypeScript
-- React
-- jQuery
-- AJAX
-- Power Platform / PowerApps
+<ul>
+  <li>Power BI</li>
+  <li>Roblox Studio / Lua</li>
+  <li>Python</li>
+  <li>C#</li>
+  <li>HTML / CSS</li>
+  <li>JavaScript</li>
+  <li>TypeScript</li>
+  <li>React</li>
+  <li>jQuery</li>
+  <li>AJAX</li>
+  <li>Power Platform / PowerApps</li>
+</ul>
 
-## About This Portfolio
+<h2>About This Portfolio</h2>
 
-The main focus of this portfolio is on **data analytics in Power BI** and **game development in Roblox**. These projects represent my strongest practical interests and the areas I want to highlight the most.
+<p>The main focus of this portfolio is on <strong>data analytics in Power BI</strong> and <strong>game development in Roblox</strong>. These projects represent my strongest practical interests and the areas I want to highlight the most.</p>
 
-The rest of the repository demonstrates additional programming practice and technical learning that support my overall growth and versatility.
+<p>The rest of the repository demonstrates additional programming practice and technical learning that support my overall growth and versatility.</p>
 
     </td>
   </tr>
